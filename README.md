@@ -1,5 +1,5 @@
 # GO-SNAKE
-Example of usage package pixel to create simple snake game.
+Example of use package pixel to create a simple snake game.
 ## Gameplay
 ### Control
 :arrow_up: :arrow_down: :arrow_left: :arrow_right: - moving  
