@@ -52,7 +52,7 @@ func (s *Snake) nextMove() pixel.Vec {
 	return pixel.V(rectEdge*math.Cos(angle), rectEdge*math.Sin(angle))
 }
 
-func (s *Snake) Move() error {
+func (s *Snake) calculateHead() pixel.Rect {
 	newHead := s.segments[0].Moved(s.nextMove())
 	x, y := newHead.Center().XY()
 
@@ -65,6 +65,12 @@ func (s *Snake) Move() error {
 	} else if x > width {
 		newHead = newHead.Moved(pixel.V(-width, 0))
 	}
+
+	return newHead
+}
+
+func (s *Snake) Move() error {
+	newHead := s.calculateHead()
 
 	if s.selfCollided() {
 		return errors.New("Game Over")
